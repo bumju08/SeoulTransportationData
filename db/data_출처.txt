@@ -1,0 +1,22 @@
+서울특별시 - 자치구별 총인구 (추계인구) 통계
+https://data.seoul.go.kr/dataList/10818/S/2/datasetView.do
+
+
+서울교통공사 - 자치구별 지하철역 정보
+https://www.data.go.kr/data/15081868/fileData.do?recommendDataYn=Y
+
+
+서울특별시 - 지하철 호선별 역별 시간대별 승하차 인원 정보
+https://data.seoul.go.kr/dataList/OA-12252/S/1/datasetView.do
+
+
+서울특별시 - 버스노선별 정류장별 시간대별 승하차 인원 정보
+http://data.seoul.go.kr/dataList/OA-12913/S/1/datasetView.do
+
+
+
+
+
+※ 본 프로그램은 공공데이터에서 일부 누락된 데이터를 수기로 추가하고, 서울시 외의 지역의 데이터를 제거한 채로 사용했습니다.
+또한, 공공데이터 자체에 누락된 데이터들이 있고, 단순 승하차 정보만이 존재하며 서울시 내의 데이터만 있기에 정확한 통계를 내리기는 어렵습니다.
+(서울 내에서 지하철을 타 환승하여 경기도의 서울 외 다른 지역이나 인천광역시 등에서 하차하는 경우, 해당 하차건은 처리되지 않음)
