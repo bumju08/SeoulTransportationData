@@ -3,12 +3,16 @@ import reader, configurator
 
 
 class population:
-    def __init__(self):
-        self.dfReader = reader.dataframe()
+    """인구수 데이터 처리 클래스입니다."""
 
-    def fromSeoul(self) -> dict:
+    def __init__(self):
+        self.__dfReader = reader.dataframe()
+
+    def seoul(self) -> dict:
+        """서울시 자치구별 인구수를 추출하여 반환하는 함수입니다."""
+
         data = dict()
-        dataframe = self.dfReader.fromCsv("population")
+        dataframe = self.__dfReader.fromCsv("population")
 
         if dataframe is None:
             return None
@@ -65,13 +69,17 @@ class population:
 
 
 
-class usage:
-    def __init__(self):
-        self.dfReader = reader.dataframe()
-        self.codeGenerator = configurator.areaCode()
+class transport:
+    """교통 데이터 처리 클래스입니다."""
 
-    def fromBus(self) -> dict:
-        dataframe = self.dfReader.fromCsv("bus")
+    def __init__(self):
+        self.__dfReader = reader.dataframe()
+        self.__codeGenerator = configurator.areaCode()
+
+    def bus(self) -> dict:
+        """자치구별 버스 승하차 데이터를 dict 형태로 반환하는 함수입니다."""
+
+        dataframe = self.__dfReader.fromCsv("bus")
         if dataframe is None:
             return None
 
@@ -88,12 +96,12 @@ class usage:
                 passenger_data[column] = dataframe[column].values
 
         # 자치구 이름 읽고 값 초기화
-        bus_usage = population().fromSeoul()
+        bus_usage = population().seoul()
         for key in bus_usage.keys():
             bus_usage[key] = {"in":0, "out":0}
 
         # 자치구별 코드 추출
-        areaCodes = self.codeGenerator.readSeoul()
+        areaCodes = self.__codeGenerator.readSeoul()
 
         # 데이터 추출
         for index, area_full_code in enumerate(dataframe[col_area]):
@@ -123,8 +131,10 @@ class usage:
         return bus_usage
 
 
-    def fromSubway(self) -> dict:
-        dataframe = self.dfReader.fromCsv("subway")
+    def subway(self) -> dict:
+        """자치구별 지하철 승하차 데이터를 dict 형태로 반환하는 함수입니다."""
+
+        dataframe = self.__dfReader.fromCsv("subway")
         if dataframe is None:
             return None
 
@@ -138,7 +148,7 @@ class usage:
                 passenger_data[column] = dataframe[column].values
 
         # 자치구 이름 읽고 값 초기화
-        subway_usage = population().fromSeoul()
+        subway_usage = population().seoul()
         for key in subway_usage.keys():
             subway_usage[key] = {"in":0, "out":0}
 

@@ -4,15 +4,16 @@ import miner, reader
 
 
 class areaCode:
+    """서울시 자치구 고유코드를 읽어들이는 클래스입니다."""
+
     def __init__(self):
-        self.popMiner = miner.population()
+        self.__popMiner = miner.population()
         self.dir = './db'
         self.fileName = 'area_code.json'
 
-    # Private Function
-    # population csv 파일로부터 각 자치구별 인구수를 반환하는 함수
     def __getSeoul(self) -> dict:
-        areaData = self.popMiner.fromSeoul()
+        """population csv 파일로부터 자치구별 고유 코드를 읽어들이는 함수입니다."""
+        areaData = self.__popMiner.seoul()
 
         if areaData == None:
             return None
@@ -28,15 +29,16 @@ class areaCode:
 
         return areaData
 
-    # 내부적으로 자치구별 인구수를 추출하여 json 파일로 쓰는 함수
+
     def writeSeoul(self) -> None:
+        """서울시 자치구별 고유코드를 읽어 db/area_code.json 파일로 저장하는 함수입니다."""
         areaData = self.__getSeoul()
 
         with open(self.dir + '/' + self.fileName, 'w', encoding='utf-8') as json_file:
             json.dump(areaData, json_file, indent=4, ensure_ascii=False)
     
-    # 자치구별 인구수를 반환하는 함수
     def readSeoul(self) -> dict:
+        """서울시 자치구별 고유코드를 읽어 {고유코드:자치구명} 형태의 dict로 반환하는 함수입니다."""
         if not os.path.isfile(self.dir + '/' + self.fileName):
             return self.__getSeoul()
 
@@ -53,11 +55,14 @@ class areaCode:
 
 
 class subwayStation:
+    """자치구별로 존재하는 지하철 역들을 읽어들이는 클래스입니다."""
+
     def __init__(self):
-        self.dfReader = reader.dataframe()
+        self.__dfReader = reader.dataframe()
 
     def readSeoul(self) -> dict:
-        dataframe = self.dfReader.fromCsv("subwayarea")
+        """모든 서울시 지하철 역을 자치구별로 분류해 {자치구명:[역명1, 역명2, 역명3, ...]} 형태의 dict로 반환하는 함수입니다."""
+        dataframe = self.__dfReader.fromCsv("subwayarea")
         if dataframe is None:
             return None
 

@@ -3,11 +3,17 @@ import os
 
 
 class dataframe:
+    """여러가지 형태의 데이터를 pandas DataFrame 형태로 변환하는 클래스입니다."""
+
     def __init__(self):
         self.encodings = ['utf-8', 'cp949', 'euc-kr']
+        self.dbDir = "./db"
 
     def fromCsv(self, dataType: str) -> pandas.core.frame.DataFrame:
-        dbDir = "./db"
+        """csv 파일을 읽어 pandas DataFrame으로 변환하여 반환하는 함수입니다.
+        
+        dataType: 읽어들일 csv 파일의 숫자, 특수문자, 확장자를 제외한 이름입니다."""
+        dbDir = self.dbDir
         filePath = ""
 
         if len(dataType) == 0:
