@@ -14,6 +14,7 @@ class transport:
     def __init__(self):
         self.__tpMiner = miner.transport()
         self.__popMiner = miner.population()
+        self.__chartBar = []
 
     @staticmethod
     def getDaysOfMonth() -> int:
@@ -35,8 +36,12 @@ class transport:
 
         return data
 
-    def createChartBar(self, dataModel: str, dataType: str, sortType: int, label: str, color_hex: str) -> dict:
-        """시각화 차트에 사용할 바 데이터셋을 하나 생성합니다.
+    def resetChartBar(self) -> None:
+        """시각화 차트에 사용할 데이터셋을 초기화합니다."""
+        self.__chartBar.clear()
+
+    def addChartBar(self, dataModel: str, dataType: str, sortType: int, label: str, color_hex: str) -> None:
+        """시각화 차트에 바 데이터셋을 하나 추가합니다.
         
         dataModel: "bus", "subway", "population"
         dataType: "dailyrate", "all", "in", "out"
@@ -45,13 +50,14 @@ class transport:
         color_hex: 바의 색상"""
         
         data = self.getData(dataModel, dataType, sortType)
-        return { 'data':data, 'color_hex':color_hex, 'label':label }
+        self.__chartBar.append({ 'data':data, 'color_hex':color_hex, 'label':label })
 
-    def showCharts(self, dataList: list, title: str, xLabel: str, yLabel: str) -> None:
+    def showCharts(self, title: str, xLabel: str, yLabel: str) -> None:
         """정리된 dict 형태의 교통 데이터를 시각화하여 차트를 그리는 함수입니다.
         
         data: 시각화할 데이터의 정보들을 담은 list입니다. list 내의 각 원소에는 시각화할 dict 데이터가 필요하며, 'data', 'color_hex', 'label' key를 요구합니다.
         """
+        dataList = self.__chartBar
 
         # 한글깨짐 방지를 위한 폰트 설정 및 기본 설정
         fontPath = "C:/Windows/Fonts/ngulim.ttf"
