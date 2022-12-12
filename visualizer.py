@@ -112,6 +112,13 @@ class transport:
         population = self.__popMiner.seoul()
         population.pop("소계", None)
         if dataModel == "population":
+            descending = False
+
+            if sortType == 2:
+                descending = True
+            if sortType > 0:
+                population = self.sortDictByValue(population, descending)
+
             return population
 
         # 교통 데이터 가져오기
