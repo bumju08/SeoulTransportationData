@@ -32,6 +32,9 @@ namespace SeoulTransportationData.UI
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.top_panel = new System.Windows.Forms.Panel();
+            this.top_title = new System.Windows.Forms.Label();
+            this.minimize_top = new System.Windows.Forms.PictureBox();
+            this.close_top = new System.Windows.Forms.PictureBox();
             this.menu_panel_1 = new System.Windows.Forms.Panel();
             this.menu_panel_2 = new System.Windows.Forms.Panel();
             this.Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -41,14 +44,11 @@ namespace SeoulTransportationData.UI
             this.menu_overlay = new System.Windows.Forms.Button();
             this.menu_decorate = new System.Windows.Forms.Button();
             this.menu_transport = new System.Windows.Forms.Button();
-            this.top_title = new System.Windows.Forms.Label();
-            this.minimize_top = new System.Windows.Forms.PictureBox();
-            this.close_top = new System.Windows.Forms.PictureBox();
-            this.colorLabel1 = new SeoulTransportationData.Lib.UI.ColorLabel();
+            this.python_state = new System.Windows.Forms.Label();
             this.top_panel.SuspendLayout();
-            this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize_top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close_top)).BeginInit();
+            this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // top_panel
@@ -65,6 +65,52 @@ namespace SeoulTransportationData.UI
             this.top_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.top_panel_MouseDown);
             this.top_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.top_panel_MouseMove);
             this.top_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.top_panel_MouseUp);
+            // 
+            // top_title
+            // 
+            this.top_title.AutoSize = true;
+            this.top_title.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.top_title.ForeColor = System.Drawing.Color.White;
+            this.top_title.Image = global::SeoulTransportationData.Properties.Resources.pie_chart_small;
+            this.top_title.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.top_title.Location = new System.Drawing.Point(4, 6);
+            this.top_title.Name = "top_title";
+            this.top_title.Size = new System.Drawing.Size(103, 17);
+            this.top_title.TabIndex = 31;
+            this.top_title.Text = "     멋있는 제목";
+            this.top_title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.top_title_MouseDown);
+            this.top_title.MouseMove += new System.Windows.Forms.MouseEventHandler(this.top_title_MouseMove);
+            this.top_title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.top_title_MouseUp);
+            // 
+            // minimize_top
+            // 
+            this.minimize_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.minimize_top.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimize_top.Image = global::SeoulTransportationData.Properties.Resources.minimize;
+            this.minimize_top.Location = new System.Drawing.Point(978, 2);
+            this.minimize_top.Name = "minimize_top";
+            this.minimize_top.Size = new System.Drawing.Size(25, 25);
+            this.minimize_top.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimize_top.TabIndex = 19;
+            this.minimize_top.TabStop = false;
+            this.minimize_top.Click += new System.EventHandler(this.minimize_top_Click);
+            this.minimize_top.MouseEnter += new System.EventHandler(this.minimize_top_MouseEnter);
+            this.minimize_top.MouseLeave += new System.EventHandler(this.minimize_top_MouseLeave);
+            // 
+            // close_top
+            // 
+            this.close_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.close_top.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close_top.Image = global::SeoulTransportationData.Properties.Resources.close;
+            this.close_top.Location = new System.Drawing.Point(1006, 2);
+            this.close_top.Name = "close_top";
+            this.close_top.Size = new System.Drawing.Size(25, 25);
+            this.close_top.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.close_top.TabIndex = 20;
+            this.close_top.TabStop = false;
+            this.close_top.Click += new System.EventHandler(this.close_top_Click);
+            this.close_top.MouseEnter += new System.EventHandler(this.close_top_MouseEnter);
+            this.close_top.MouseLeave += new System.EventHandler(this.close_top_MouseLeave);
             // 
             // menu_panel_1
             // 
@@ -155,61 +201,16 @@ namespace SeoulTransportationData.UI
             this.menu_transport.UseVisualStyleBackColor = true;
             this.menu_transport.Click += new System.EventHandler(this.menu_transport_Click);
             // 
-            // top_title
+            // python_state
             // 
-            this.top_title.AutoSize = true;
-            this.top_title.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.top_title.ForeColor = System.Drawing.Color.White;
-            this.top_title.Image = global::SeoulTransportationData.Properties.Resources.pie_chart_small;
-            this.top_title.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.top_title.Location = new System.Drawing.Point(4, 6);
-            this.top_title.Name = "top_title";
-            this.top_title.Size = new System.Drawing.Size(103, 17);
-            this.top_title.TabIndex = 31;
-            this.top_title.Text = "     멋있는 제목";
-            this.top_title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.top_title_MouseDown);
-            this.top_title.MouseMove += new System.Windows.Forms.MouseEventHandler(this.top_title_MouseMove);
-            this.top_title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.top_title_MouseUp);
-            // 
-            // minimize_top
-            // 
-            this.minimize_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.minimize_top.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimize_top.Image = global::SeoulTransportationData.Properties.Resources.minimize;
-            this.minimize_top.Location = new System.Drawing.Point(978, 2);
-            this.minimize_top.Name = "minimize_top";
-            this.minimize_top.Size = new System.Drawing.Size(25, 25);
-            this.minimize_top.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.minimize_top.TabIndex = 19;
-            this.minimize_top.TabStop = false;
-            this.minimize_top.Click += new System.EventHandler(this.minimize_top_Click);
-            this.minimize_top.MouseEnter += new System.EventHandler(this.minimize_top_MouseEnter);
-            this.minimize_top.MouseLeave += new System.EventHandler(this.minimize_top_MouseLeave);
-            // 
-            // close_top
-            // 
-            this.close_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.close_top.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close_top.Image = global::SeoulTransportationData.Properties.Resources.close;
-            this.close_top.Location = new System.Drawing.Point(1006, 2);
-            this.close_top.Name = "close_top";
-            this.close_top.Size = new System.Drawing.Size(25, 25);
-            this.close_top.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.close_top.TabIndex = 20;
-            this.close_top.TabStop = false;
-            this.close_top.Click += new System.EventHandler(this.close_top_Click);
-            this.close_top.MouseEnter += new System.EventHandler(this.close_top_MouseEnter);
-            this.close_top.MouseLeave += new System.EventHandler(this.close_top_MouseLeave);
-            // 
-            // colorLabel1
-            // 
-            this.colorLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.colorLabel1.ForeColor = System.Drawing.Color.LightGray;
-            this.colorLabel1.Location = new System.Drawing.Point(12, 153);
-            this.colorLabel1.Name = "colorLabel1";
-            this.colorLabel1.Size = new System.Drawing.Size(127, 30);
-            this.colorLabel1.TabIndex = 31;
-            this.colorLabel1.Text = "색상을 선택";
+            this.python_state.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.python_state.ForeColor = System.Drawing.Color.White;
+            this.python_state.Location = new System.Drawing.Point(7, 151);
+            this.python_state.Name = "python_state";
+            this.python_state.Size = new System.Drawing.Size(196, 17);
+            this.python_state.TabIndex = 32;
+            this.python_state.Text = "! Python Not Installed";
+            this.python_state.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -217,7 +218,7 @@ namespace SeoulTransportationData.UI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.ClientSize = new System.Drawing.Size(1034, 718);
             this.ControlBox = false;
-            this.Controls.Add(this.colorLabel1);
+            this.Controls.Add(this.python_state);
             this.Controls.Add(this.menu_decorate);
             this.Controls.Add(this.menu_transport);
             this.Controls.Add(this.menu_panel_2);
@@ -234,9 +235,9 @@ namespace SeoulTransportationData.UI
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
-            this.Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minimize_top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close_top)).EndInit();
+            this.Menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -255,7 +256,7 @@ namespace SeoulTransportationData.UI
         private System.Windows.Forms.Button menu_transport;
         private System.Windows.Forms.Button menu_decorate;
         private System.Windows.Forms.Label top_title;
-        private Lib.UI.ColorLabel colorLabel1;
+        private System.Windows.Forms.Label python_state;
     }
 }
 

@@ -13,14 +13,15 @@ namespace SeoulTransportationData.Lib.UI
     /// <summary>
     /// 윈도우 기본 체크박스가 못생겨서 만든 사용자 정의 컨트롤
     /// </summary>
-    class flatCheckBox : CheckBox
+    class FlatCheckBox : CheckBox
     {
         private Color checkBoxBackColor = Color.FromArgb(22, 22, 22);
         private bool mouseEntered = false;
 
-        public flatCheckBox()
+        public FlatCheckBox()
         {
             Size = new Size(35, 30);
+            Cursor = Cursors.Hand;
         }
 
         protected override void OnMouseEnter(EventArgs eventargs)

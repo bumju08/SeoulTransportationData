@@ -22,6 +22,7 @@ namespace SeoulTransportationData.Lib.UI
             AutoSize = false;
             ForeColor = Color.LightGray;
             Cursor = Cursors.Hand;
+            Text = "Color Selector";
         }
 
 

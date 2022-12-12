@@ -76,6 +76,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>graph.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -106,7 +109,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lib\UI\DropShadow.cs" />
-    <Compile Include="Lib\UI\flatCheckBox.cs">
+    <Compile Include="Lib\UI\FlatCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Lib\Zip.cs" />
@@ -193,6 +196,10 @@
     <None Include="Resources\minimize.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="graph.ico" />
+    <Content Include="Resources\graph.ico" />
+    <None Include="Resources\remove_small.png" />
+    <None Include="Resources\plus_small.png" />
     <None Include="Resources\pie_chart_small.png" />
     <None Include="Resources\bus.png" />
     <Content Include="Resources\close.png" />

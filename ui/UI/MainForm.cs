@@ -104,7 +104,7 @@ namespace SeoulTransportationData.UI
             // Lock
             File.Open(Application.ExecutablePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-            this.Size = new Size(825, 555);
+            this.Size = new Size(865, 855);
 
             LayoutPanel();
             resizeControls();
@@ -121,6 +121,28 @@ namespace SeoulTransportationData.UI
             Focus();
 
             menu_transport_Click(menu_transport, new EventArgs());
+
+            // Python 설치 여부 확인
+            using (var python = new Lib.Python.Engine())
+            {
+                if (python.IsInstalled())
+                {
+                    string python_version = python.GetVersion();
+
+                    python_state.ForeColor = Color.FromArgb(0, 165, 100);
+                    python_state.Text = "✔ " + python_version.Trim() + " Installed!";
+                }
+
+                else
+                {
+                    python_state.ForeColor = Color.FromArgb(255, 81, 36);
+
+                    Program.ShowMsgbox("이 컴퓨터에는 Python이 설치되어 있지 않은 것 같습니다.\n\nPython을 설치한 후 프로그램을 재실행하여 주십시오.", "알림");
+
+                    panel_transport.Enabled = false;
+                }
+            }
+
         }
 
 
@@ -148,7 +170,8 @@ namespace SeoulTransportationData.UI
                 BackColor = Color.FromArgb(22, 22, 22),
                 Location = new Point(menu_transport.Right + 5, menu_transport.Top),
                 Width = this.Width - (216),
-                Height = this.Height - (36)
+                Height = this.Height - (36),
+                AutoScroll = true,
             };
 
             panel_transport.Controls.Add(m_transport);
@@ -259,7 +282,7 @@ namespace SeoulTransportationData.UI
 
 
         #region Event Handlers - Menu
-        private void highlightMenu(Button current_menu)
+        private void HighlightMenu(Button current_menu)
         {
             string menu_name = current_menu.Name.Remove(0, 5);
 
@@ -294,17 +317,12 @@ namespace SeoulTransportationData.UI
 
         private void menu_transport_Click(object sender, EventArgs e)
         {
-            highlightMenu((Button)sender);
+            HighlightMenu((Button)sender);
         }
 
         private void menu_decorate_Click(object sender, EventArgs e)
         {
-            using (var python = new Lib.Python.Visualizer())
-            {
-                python.GenerateData();
-            }
-
-            Program.ShowMsgbox("테스트에용", "제목입니당");
+            Program.ShowMsgbox("개발되지 않은 메뉴입니다.", "알림");
 
         }
         #endregion

@@ -29,6 +29,21 @@ namespace SeoulTransportationData.Lib.Python
         }
 
         /// <summary>
+        /// 내 컴퓨터에 Python이 설치되어 있는지 확인합니다.
+        /// </summary>
+        public bool IsInstalled()
+        {
+            string python_version = GetVersion();
+
+            if (!python_version.Trim().StartsWith("Python"))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Python의 버전을 반환합니다.
         /// </summary>
         public string GetVersion()
